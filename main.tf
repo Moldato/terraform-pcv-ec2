@@ -18,7 +18,7 @@ resource "aws_iam_instance_profile" "ec2_profile" {
   name = "${var.profile_name}-ec2-profile"
   role = aws_iam_role.instance-role.name
   tags = {
-    "Name" = "${var.profile_name} EC2 profile"
+    Name = "${var.profile_name} EC2 profile"
   }
 }
 
@@ -29,7 +29,7 @@ resource "aws_instance" "api" {
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
 
   tags = {
-    "Name" = "${var.profile_name}-api"
+    Name = "${var.profile_name}-api"
   }
 }
 
