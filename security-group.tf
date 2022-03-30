@@ -1,7 +1,7 @@
 resource "aws_security_group" "api-sg" {
   name        = "${var.profile_name}-api-sg"
   description = "Allow all outbound traffic and inbound 22/80"
-  tags = { Name = "${var.profile_name}-api-sg"}
+  tags        = { Name = "${var.profile_name}-api-sg" }
 
   ingress {
     from_port   = 22

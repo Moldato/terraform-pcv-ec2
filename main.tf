@@ -10,8 +10,8 @@ terraform {
 }
 
 provider "aws" {
-  profile    = var.profile_name
-  region     = var.region
+  profile = var.profile_name
+  region  = var.region
 }
 
 resource "aws_instance" "api" {
