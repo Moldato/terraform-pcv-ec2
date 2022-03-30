@@ -1,0 +1,1 @@
+Está sendo criado politica de permissões para ec2, falta criar um grupo e usuário que seja aceito na primeira requisição do terraforma. Ou seja, quando executar o terraform pela primeira vez, ele já crie o grupo e usuário com essas permissoes para execução das demais criações. Ficando idependente do usuário incial criado.
