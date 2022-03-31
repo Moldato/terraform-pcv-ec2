@@ -23,10 +23,13 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 }
 
 resource "aws_instance" "api" {
-  ami                    = "ami-064ff912f78e3e561"
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.api-sg.id]
-  iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
+  ami                  = "ami-064ff912f78e3e561"
+  instance_type        = "t2.micro"
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+  security_groups = [
+    aws_security_group.api-sg.id
+  ]
+  subnet_id = aws_subnet.vpc_subnet_a.id
 
   tags = {
     Name = "${var.profile_name}-api"

@@ -17,15 +17,15 @@ output "instance_aplication_url" {
 
 output "account_id" {
   description = "Show Account ID"
-  value = data.aws_caller_identity.current.account_id
+  value       = data.aws_caller_identity.current.account_id
 }
 
 output "caller_arn" {
   description = "Show ARN Account ID"
-  value = data.aws_caller_identity.current.arn
+  value       = data.aws_caller_identity.current.arn
 }
 
 output "caller_user" {
   description = "Show User ID"
-  value = data.aws_caller_identity.current.user_id
+  value       = data.aws_caller_identity.current.user_id
 }

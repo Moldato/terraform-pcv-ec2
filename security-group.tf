@@ -1,7 +1,7 @@
 resource "aws_security_group" "api-sg" {
   name        = "${var.profile_name}-api-sg"
   description = "Allow all outbound traffic and inbound 22/80"
-  tags        = { Name = "${var.profile_name}-api-sg" }
+  vpc_id      = aws_vpc.private_vpc.id
 
   ingress {
     from_port   = 22
@@ -22,5 +22,9 @@ resource "aws_security_group" "api-sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "${var.profile_name}-api-sg"
   }
 }

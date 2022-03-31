@@ -51,6 +51,11 @@ resource "aws_iam_policy" "ec2_policy" {
 }
 ```
 
+EXIBIR O ESTADO ATUAL DOS RECURSOS
+```
+$ terraform show
+```
+
 EXPORT GRAPH PARA SVG
 Instalar graphviz
 ```
