@@ -41,10 +41,30 @@ resource "aws_subnet" "vpc_subnet_c" {
   }
 }
 
+# Definir Gateway para VPC
+# Um gateway da Internet é um componente de VPC altamente disponível, 
+# redundante e escalado horizontalmente que permite a comunicação entre sua VPC e a Internet.
+# Para usar um gateway da Internet, associe-o à sua VPC e especifique-o 
+# como um destino na tabela de rotas da sub-rede para tráfego IPv4 ou IPv6 roteável pela Internet. 
+# Um gateway da Internet executa a conversão de endereços de rede (NAT) para instâncias que 
+# receberam endereços IPv4 públicos.
 resource "aws_internet_gateway" "private_vpc_igw" {
   vpc_id = aws_vpc.private_vpc.id
 
   tags = {
-    Name = "private-vpc-internet-gateway"
+    Name = "${aws_vpc.private_vpc.tags_all.Name}-internet-gateway"
+  }
+}
+
+# Definir rota para VPC
+resource "aws_route_table" "vpc_route" {
+  vpc_id = aws_vpc.private_vpc.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.private_vpc_igw.id
+  }
+
+  tags = {
+    Name = "${aws_vpc.private_vpc.tags_all.Name}-route"
   }
 }
